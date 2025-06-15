@@ -344,6 +344,7 @@ class App(object):
             self.show_error("Будь ласка, оберіть валюту зі списку.")
 
             return
+        self.progressBar.setVisible(True)
         selected_currency = item.text()
         self.predict_worker = PredictWorker(selected_currency, days=30)
         self.predict_worker.finished.connect(self.on_predict_finished)
@@ -353,9 +354,10 @@ class App(object):
 
     def on_predict_finished(self, result_text: str):
         self.label.setText(result_text)
-
+        self.progressBar.setVisible(False)
     def on_predict_error(self, error_text: str):
-        self.label.setText(error_text)
+        self.progressBar.setVisible(False)
+        self.show_error(error_text)
     def open_settings(self)-> None:
         settings_service = SettingsService()
         dlg = ThemeSettingsDialog(settings_service=settings_service)
