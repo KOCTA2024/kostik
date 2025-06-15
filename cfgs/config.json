@@ -1,0 +1,9 @@
+{
+    "is_dark_theme": true,
+    "chart_settings": {
+        "chart_type": "Діаграмма розбросу",
+        "show_grid": true,
+        "show_sma": true,
+        "line_color": "#ffaaff"
+    }
+}
